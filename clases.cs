@@ -32,14 +32,16 @@ public class Pedido
     public EstadoPedido Estado { get; set; }
     public Cliente Cliente { get; set; }
     public string? Obs { get; set; }
+    public int CadeteID{get;set;}
 
     // Constructor
-    public Pedido(Cliente cliente, string? obs, int numero, EstadoPedido estado)
+    public Pedido(Cliente cliente, string? obs, int numero, EstadoPedido estado,int cadeteID)
     {
         Cliente = cliente;
         Obs = obs;
         Numero = numero;
         Estado = estado;
+        CadeteID=cadeteID;
     }
 
     // Funciones
@@ -78,13 +80,6 @@ public class Cadete
     public void RemoverPedido(Pedido pedido){
         Pedidos.Remove(pedido);
     }
-    public void MostrarPedidos()
-    {
-        foreach (var pedido in Pedidos)
-        {
-            Console.WriteLine($"Pedido Número: {pedido.Numero}, Estado: {pedido.Estado}, Obs: {pedido.Obs}");
-        }
-    }
     public bool TienePedido(int numeroPedido)
     {
         return Pedidos.Any(p => p.Numero == numeroPedido);
@@ -117,7 +112,7 @@ public class Cadeteria{
         pedido.Estado = EstadoPedido.Procesando;
     }
 
-    public void MostrarPedidos(List<Cadete> ListadoCadetes){
+    public static void MostrarPedidos(List<Cadete> ListadoCadetes){
         foreach (Cadete cadete in ListadoCadetes){
             Console.WriteLine($"Cadete:{cadete.Nombre}");
             foreach(Pedido pedido in cadete.Pedidos){
@@ -126,5 +121,40 @@ public class Cadeteria{
 
         }
     }
+    public int JornalACobrar(int CadeteID){
+        int jornal = 0;
+        int monto = 500;
+        foreach(Cadete cadete in ListadoCadetes){
+            if(cadete.Id == CadeteID){
+                foreach(Pedido pedido in cadete.Pedidos){
+                    if(pedido.Estado==EstadoPedido.Entregado){
+                        jornal += monto;
+                    }
+                }
+        }
+    }
+    return jornal;
+    }   
+    public void AsignarCadeteAPedido(int CadeteID,int PedidoID){
+        Cadete CadeteEncontrado=null;
+        Pedido PedidoEncontrado=null;
+        foreach(Cadete cadete in ListadoCadetes){
+            if(cadete.Id == CadeteID){
+                CadeteEncontrado=cadete;
+                break;
+        }
+        if(CadeteEncontrado!=null){
+            foreach(Pedido pedido in CadeteEncontrado.Pedidos){
+                if(pedido.Numero == PedidoID){
+                    PedidoEncontrado=pedido;
+                    CadeteEncontrado.AgregarPedido(PedidoEncontrado);
+                    break;
+            }else{
+                Console.WriteLine("No se encontró el pedido");
+            }}
+        }else{
+            Console.WriteLine("No se encontró el cadete");
+        }
 }
-}
+
+}}}

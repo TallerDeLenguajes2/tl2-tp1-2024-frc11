@@ -1,0 +1,122 @@
+[
+    {
+        "Numero": 101,
+        "Estado": "Procesando",
+        "Cliente": {
+            "Nombre": "Carlos López",
+            "Direccion": "Calle Uno 234",
+            "Telefono": "111222333",
+            "Referencia": "Al lado del parque"
+        },
+        "Observaciones": "Sin observaciones",
+        "CadeteID": 1
+    },
+    {
+        "Numero": 102,
+        "Estado": "Enviado",
+        "Cliente": {
+            "Nombre": "Lucía Martínez",
+            "Direccion": "Calle Dos 456",
+            "Telefono": "444555666",
+            "Referencia": "Cerca de la plaza"
+        },
+        "Observaciones": "Verificar",
+        "CadeteID": 2
+    },
+    {
+        "Numero": 103,
+        "Estado": "Entregado",
+        "Cliente": {
+            "Nombre": "Roberto Gómez",
+            "Direccion": "Calle Tres 678",
+            "Telefono": "777888999",
+            "Referencia": "Frente a la escuela"
+        },
+        "Observaciones": "Entregar antes del mediodía",
+        "CadeteID": 3
+    },
+    {
+        "Numero": 104,
+        "Estado": "Cancelado",
+        "Cliente": {
+            "Nombre": "Ana Pérez",
+            "Direccion": "Calle Cuatro 890",
+            "Telefono": "222333444",
+            "Referencia": "En el centro comercial"
+        },
+        "Observaciones": "Sin observaciones",
+        "CadeteID": 4
+    },
+    {
+        "Numero": 105,
+        "Estado": "Procesando",
+        "Cliente": {
+            "Nombre": "Juan Gómez",
+            "Direccion": "Calle Cinco 123",
+            "Telefono": "555666777",
+            "Referencia": "En el parque"
+        },
+        "Observaciones": "Pedido cancelado por error",
+        "CadeteID": 5
+    },
+    {
+        "Numero": 106,
+        "Estado": "Enviado",
+        "Cliente": {
+            "Nombre": "Laura Fernández",
+            "Direccion": "Calle Seis 234",
+            "Telefono": "888999000",
+            "Referencia": "Frente a la oficina"
+        },
+        "Observaciones": "Confirmar dirección",
+        "CadeteID": 6
+    },
+    {
+        "Numero": 107,
+        "Estado": "Entregado",
+        "Cliente": {
+            "Nombre": "Francisco Ruiz",
+            "Direccion": "Calle Siete 345",
+            "Telefono": "111222333",
+            "Referencia": "Al lado del hospital"
+        },
+        "Observaciones": "Actualizar estado",
+        "CadeteID": 7
+    },
+    {
+        "Numero": 108,
+        "Estado": "Cancelado",
+        "Cliente": {
+            "Nombre": "Mónica García",
+            "Direccion": "Calle Ocho 456",
+            "Telefono": "444555666",
+            "Referencia": "En la biblioteca"
+        },
+        "Observaciones": "Esperando confirmación",
+        "CadeteID": 8
+    },
+    {
+        "Numero": 109,
+        "Estado": "Procesando",
+        "Cliente": {
+            "Nombre": "David Morales",
+            "Direccion": "Calle Nueve 567",
+            "Telefono": "777888999",
+            "Referencia": "En el gimnasio"
+        },
+        "Observaciones": "Pedido entregado exitosamente",
+        "CadeteID": 9
+    },
+    {
+        "Numero": 110,
+        "Estado": "Enviado",
+        "Cliente": {
+            "Nombre": "Sofía López",
+            "Direccion": "Calle Diez 678",
+            "Telefono": "222333444",
+            "Referencia": "En la cafetería"
+        },
+        "Observaciones": "Cancelado por solicitud del cliente",
+        "CadeteID": 10
+    }
+]
