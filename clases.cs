@@ -99,17 +99,25 @@ public class Cadeteria{
     }
 
     //metodos adicionales
-    public void AgregarCadete(Cadete CadeteNuevo){
-        ListadoCadetes.Add(CadeteNuevo);
+    public void AgregarCadete(int id, string nombre, string direccion, string telefono){
+        Cadete nuevoCadete = new Cadete(id, nombre, direccion, telefono);
+        ListadoCadetes.Add(nuevoCadete);
     }
 
-    public void EliminarCadete(Cadete CadeteABorrar){
-        ListadoCadetes.Remove(CadeteABorrar);
+    public void EliminarCadete(int cadeteID){
+        Cadete cadeteAEliminar = ListadoCadetes?.FirstOrDefault(c => c.Id == cadeteID);
+        if (cadeteAEliminar != null) {
+            ListadoCadetes.Remove(cadeteAEliminar);
+        }
     }
 
-    public void AsignarPedido(Cadete Cadete,Pedido pedido){
-        Cadete.AgregarPedido(pedido);
-        pedido.Estado = EstadoPedido.Procesando;
+    public void AsignarPedido(int cadeteID, int numeroPedido, string clienteNombre, string clienteDireccion, string clienteTelefono, string clienteReferencia, string? obs){
+        Cadete cadete = ListadoCadetes?.FirstOrDefault(c => c.Id == cadeteID);
+        if (cadete != null){
+            Cliente cliente = new Cliente(clienteNombre, clienteDireccion, clienteTelefono, clienteReferencia);
+            Pedido pedido = new Pedido(cliente, obs, numeroPedido, EstadoPedido.Procesando, cadeteID);
+            cadete.AgregarPedido(pedido);
+        }
     }
 
     public static void MostrarPedidos(List<Cadete> ListadoCadetes){

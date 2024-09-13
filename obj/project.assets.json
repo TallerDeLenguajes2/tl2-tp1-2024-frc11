@@ -55,24 +55,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\franc\\.nuget\\packages\\": {}
+    "C:\\Users\\Vero\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\FRC\\TallerDeLenguajes2\\tl2-tp1-2024-frc11\\tl2-tp1-2024-frc11.csproj",
+      "projectUniqueName": "C:\\Users\\Vero\\OneDrive\\Escritorio\\2° C-2024\\taller de lenguajes 2\\TP1\\tl2-tp1-2024-frc11\\tl2-tp1-2024-frc11.csproj",
       "projectName": "tl2-tp1-2024-frc11",
-      "projectPath": "C:\\FRC\\TallerDeLenguajes2\\tl2-tp1-2024-frc11\\tl2-tp1-2024-frc11.csproj",
-      "packagesPath": "C:\\Users\\franc\\.nuget\\packages\\",
-      "outputPath": "C:\\FRC\\TallerDeLenguajes2\\tl2-tp1-2024-frc11\\obj\\",
+      "projectPath": "C:\\Users\\Vero\\OneDrive\\Escritorio\\2° C-2024\\taller de lenguajes 2\\TP1\\tl2-tp1-2024-frc11\\tl2-tp1-2024-frc11.csproj",
+      "packagesPath": "C:\\Users\\Vero\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Vero\\OneDrive\\Escritorio\\2° C-2024\\taller de lenguajes 2\\TP1\\tl2-tp1-2024-frc11\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\franc\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Vero\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -117,7 +119,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
