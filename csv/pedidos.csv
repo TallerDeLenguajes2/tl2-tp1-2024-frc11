@@ -1,0 +1,11 @@
+PedidoNumero,Estado,ClienteNombre,ClienteDireccion,ClienteTelefono,ClienteReferencia,Obs,CadeteId
+101,Procesando,Carlos López,Calle Uno 234,111222333,Al lado del parque,Sin observaciones,1
+102,Enviado,Lucía Martínez,Calle Dos 456,444555666,Cerca de la plaza,Verificar,2
+103,Entregado,Roberto Gómez,Calle Tres 678,777888999,Frente a la escuela,Entregar antes del mediodía,3
+104,Cancelado,Ana Pérez,Calle Cuatro 890,222333444,En el centro comercial,Sin observaciones,4
+105,Procesando,Juan Gómez,Calle Cinco 123,555666777,En el parque,Pedido cancelado por error,5
+106,Enviado,Laura Fernández,Calle Seis 234,888999000,Frente a la oficina,Confirmar dirección,6
+107,Entregado,Francisco Ruiz,Calle Siete 345,111222333,Al lado del hospital,Actualizar estado,7
+108,Cancelado,Mónica García,Calle Ocho 456,444555666,En la biblioteca,Esperando confirmación,8
+109,Procesando,David Morales,Calle Nueve 567,777888999,En el gimnasio,Pedido entregado exitosamente,9
+110,Enviado,Sofía López,Calle Diez 678,222333444,En la cafetería,Cancelado por solicitud del cliente,10
