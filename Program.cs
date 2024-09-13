@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.IO;
+using System.Security.Cryptography;
 using clases;
 public static class CsvReader
 {
@@ -80,7 +81,7 @@ class Program
                     Console.WriteLine("Ingrese el numero del pedido a asignar cadete");
                     int pedidoAsignar = int.Parse(Console.ReadLine());
                     Pedido pedidoEncontrado = null;
-                    foreach(Pedido pedido1 in pedidos){
+                    foreach(var (pedido1,_) in pedidos){
                         if(pedido1.Numero==pedidoAsignar){
                             pedidoEncontrado = pedido1;
                             break;}
@@ -98,7 +99,7 @@ class Program
                     Console.WriteLine("Ingrese el numero del pedido a cambiar de estado");
                     int pedidoCambio = int.Parse(Console.ReadLine());
                     Pedido pedidoEncontrado2 = null;
-                    foreach(Pedido pedido2 in pedidos){
+                    foreach(var (pedido2, _) in pedidos){
                         if(pedido2.Numero==pedidoCambio){
                             pedidoEncontrado2 = pedido2;
                             break;}}
@@ -114,7 +115,7 @@ class Program
                     Console.WriteLine("Ingrese el numero de pedido a cambiar de cadete");
                     int pedidoCambioCadete = int.Parse(Console.ReadLine());
                     Pedido pedidoEncontrado3 = null;
-                    foreach(Pedido pedido3 in pedidos){
+                    foreach(var (pedido3,_) in pedidos){
                         if(pedido3.Numero==pedidoCambioCadete){
                             pedidoEncontrado3 = pedido3;
                             break;}
@@ -134,38 +135,82 @@ class Program
                 break;
                 default: Console.WriteLine("Opcion no valida, vuelva a seleccionar \n");
                 break;
-                }}}
+                }}
+                //Informe
+                MostrarInformeFinal(cadetes);
+                }
 
            
 
-    private static Cadete MapeoCadete(string[] valores)
-    {
-        int id = int.Parse(valores[0]);
-        string nombre = valores[1];
-        string direccion = valores[2];
-        string? telefono = valores.Length > 3 ? valores[3] : null;
-        return new Cadete(id, nombre, direccion, telefono);
-    }
 
-    private static Pedido MapeoPedido(string[] valores)
-    {
-        int numero = int.Parse(valores[0]);
-        EstadoPedido estado = (EstadoPedido)Enum.Parse(typeof(EstadoPedido), valores[1]);
-        var cliente = new Cliente(valores[2], valores[3], valores[4], valores[5]);
-        string? obs = valores.Length > 6 ? valores[6] : null;
-        int cadeteId = int.Parse(valores[7]);
-        return new Pedido(cliente, obs, numero, estado);
-    }
+private static Cadete MapeoCadete(string[] valores)
+{
+    int id = int.Parse(valores[0]);
+    string nombre = valores[1];
+    string direccion = valores[2];
+    string? telefono = valores.Length > 3 ? valores[3] : null;
+    return new Cadete(id, nombre, direccion, telefono);
+}
+private static (Pedido, int) MapeoPedido(string[] valores) 
+{
+    int numero = int.Parse(valores[0]);
+    EstadoPedido estado = (EstadoPedido)Enum.Parse(typeof(EstadoPedido), valores[1]);
+    var cliente = new Cliente(valores[2], valores[3], valores[4], valores[5]);
+    string? obs = valores.Length > 6 ? valores[6] : null;
+    int cadeteId = int.Parse(valores[7]); 
+    Pedido pedido = new Pedido(cliente, obs, numero, estado);
+    return (pedido, cadeteId); 
+}
 
-    private static void AsignarPedidosACadetes(List<Pedido> pedidos, List<Cadete> cadetes)
+private static void AsignarPedidosACadetes(List<(Pedido, int)> pedidosConCadeteId, List<Cadete> cadetes)
+{
+    foreach (var (pedido, cadeteId) in pedidosConCadeteId)
     {
-        foreach (var pedido in pedidos)
+        var cadete = cadetes.FirstOrDefault(c => c.Id == cadeteId); 
+        if (cadete != null)
         {
-            var cadete = cadetes.FirstOrDefault(c => c.Id == pedido.Cliente.Telefono); // Ajusta la lógica de búsqueda según corresponda
-            if (cadete != null)
-            {
-                cadete.AgregarPedido(pedido);
-            }
+            cadete.AgregarPedido(pedido); 
         }
     }
+}
+
+    
+    public static void MostrarInformeFinal(List<Cadete> cadetes)
+{
+    int totalPedidosEntregados = 0;
+    int totalMontoGanado = 0;
+    int pagoPorPedido = 500;
+
+    Console.WriteLine("Informe de pedidos al finalizar la jornada:");
+    Console.WriteLine("--------------------------------------------");
+
+    foreach (var cadete in cadetes)
+    {
+        int cantidadPedidosEntregados = 0;
+
+        foreach (var pedido in cadete.Pedidos)
+        {
+            if (pedido.Estado == EstadoPedido.Entregado)
+            {
+                cantidadPedidosEntregados++;
+            }
+        }
+        int montoGanado = cantidadPedidosEntregados * pagoPorPedido;
+        totalPedidosEntregados += cantidadPedidosEntregados;
+        totalMontoGanado += montoGanado;
+
+        Console.WriteLine($"Cadete: {cadete.Nombre}");
+        Console.WriteLine($"Cantidad de pedidos entregados: {cantidadPedidosEntregados}");
+        Console.WriteLine($"Monto ganado: {montoGanado:C}");
+        Console.WriteLine("--------------------------------------------");
+    }
+    int cantidadCadetes = cadetes.Count;
+    decimal promedioEnviosPorCadete = (decimal)totalPedidosEntregados / cantidadCadetes;
+
+    Console.WriteLine("Resumen general:");
+    Console.WriteLine($"Total de pedidos entregados: {totalPedidosEntregados}");
+    Console.WriteLine($"Monto total ganado: {totalMontoGanado:C}");
+    Console.WriteLine($"Promedio de envíos por cadete: {promedioEnviosPorCadete:F2}");
+}
+
 }
